@@ -7,3 +7,11 @@ ogadraのGitHubをTerraformで管理するリポジトリ。
 ```bash
 make init
 ```
+
+## GitHub CLIの認証
+
+Terraformを実行するには、`repo`スコープを持つGitHubトークンが必要です。
+
+```bash
+make auth
+```
