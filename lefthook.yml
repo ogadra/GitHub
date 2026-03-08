@@ -11,9 +11,14 @@ pre-commit:
     02_terraform_validate:
       glob: "**/*.tf"
       run: terraform validate
+    # シークレットの漏洩を検知
+    03_gitleaks:
+      run: gitleaks protect --staged --verbose
 
 pre-push:
   parallel: true
   commands:
     terraform-validate:
       run: terraform validate
+    gitleaks:
+      run: gitleaks detect --verbose
