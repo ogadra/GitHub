@@ -1,0 +1,221 @@
+Terraform GitHub Provider (integrations/github) で管理できるもの
+=================================================================
+
+ソースコード (provider.go) に基づく完全なリストです。
+参照: https://github.com/integrations/terraform-provider-github/blob/main/github/provider.go
+
+
+=====================================
+リソース (Resources) — 作成・変更・削除が可能
+=====================================
+
+【リポジトリ管理】
+  github_repository                          - リポジトリの作成・管理
+  github_repository_file                     - リポジトリ内のファイル管理
+  github_repository_topics                   - リポジトリのトピック（タグ）管理
+  github_repository_collaborator             - コラボレーター（個別）の管理
+  github_repository_collaborators            - コラボレーター（一括）の管理
+  github_repository_deploy_key               - デプロイキーの管理
+  github_repository_webhook                  - Webhookの管理
+  github_repository_project                  - リポジトリプロジェクトの管理
+  github_repository_milestone                - マイルストーンの管理
+  github_repository_pull_request             - プルリクエストの管理
+  github_repository_autolink_reference       - オートリンク参照の管理
+  github_repository_custom_property          - リポジトリのカスタムプロパティ
+  github_repository_dependabot_security_updates - Dependabotセキュリティアップデート設定
+
+【ブランチ管理】
+  github_branch                              - ブランチの作成・管理
+  github_branch_default                      - デフォルトブランチの設定
+  github_branch_protection                   - ブランチ保護ルール（GraphQL API）
+  github_branch_protection_v3                - ブランチ保護ルール（REST API v3）
+
+【リポジトリ環境 (Environments)】
+  github_repository_environment              - デプロイ環境の管理
+  github_repository_environment_deployment_policy - 環境デプロイポリシーの管理
+  github_repository_deployment_branch_policy - デプロイメントブランチポリシーの管理
+
+【ルールセット】
+  github_repository_ruleset                  - リポジトリレベルのルールセット
+  github_organization_ruleset                - Organizationレベルのルールセット
+
+【GitHub Actions】
+  github_actions_secret                      - リポジトリレベルのシークレット
+  github_actions_variable                    - リポジトリレベルの変数
+  github_actions_environment_secret          - 環境レベルのシークレット
+  github_actions_environment_variable        - 環境レベルの変数
+  github_actions_organization_secret         - Organizationレベルのシークレット
+  github_actions_organization_secret_repositories  - Orgシークレットのリポジトリアクセス（一括）
+  github_actions_organization_secret_repository    - Orgシークレットのリポジトリアクセス（個別）
+  github_actions_organization_variable       - Organizationレベルの変数
+  github_actions_organization_variable_repositories - Org変数のリポジトリアクセス（一括）
+  github_actions_organization_variable_repository   - Org変数のリポジトリアクセス（個別）
+  github_actions_organization_permissions    - OrganizationレベルのActions権限
+  github_actions_organization_workflow_permissions  - Organizationワークフロー権限
+  github_actions_repository_access_level     - リポジトリのActionsアクセスレベル
+  github_actions_repository_permissions      - リポジトリのActions権限
+  github_actions_runner_group                - ランナーグループの管理
+  github_actions_hosted_runner               - ホステッドランナーの管理
+  github_actions_organization_oidc_subject_claim_customization_template - Org OIDCサブジェクトクレームのカスタマイズ
+  github_actions_repository_oidc_subject_claim_customization_template   - リポジトリOIDCサブジェクトクレームのカスタマイズ
+  github_workflow_repository_permissions     - ワークフローリポジトリ権限
+
+【チーム管理】
+  github_team                                - チームの作成・管理
+  github_team_membership                     - チームメンバーシップ（個別）
+  github_team_members                        - チームメンバー（一括）
+  github_team_repository                     - チームへのリポジトリアクセス付与
+  github_team_settings                       - チーム設定の管理
+  github_team_sync_group_mapping             - チームIdP同期グループマッピング
+
+【Organization管理】
+  github_membership                          - Organizationメンバーシップの管理
+  github_organization_settings               - Organization設定の管理
+  github_organization_block                  - ユーザーのブロック
+  github_organization_project                - Organizationプロジェクトの管理
+  github_organization_webhook                - Organization Webhookの管理
+  github_organization_security_manager       - セキュリティマネージャーチームの管理
+  github_organization_custom_role            - カスタムロールの管理
+  github_organization_custom_properties      - Organizationカスタムプロパティ
+  github_organization_repository_role        - リポジトリロールの管理
+  github_organization_role                   - Organizationロールの管理
+  github_organization_role_team              - ロールへのチーム割り当て
+  github_organization_role_user              - ロールへのユーザー割り当て
+  github_organization_role_team_assignment   - ロールチーム割り当て
+
+【Dependabot】
+  github_dependabot_secret                   - リポジトリレベルのDependabotシークレット
+  github_dependabot_organization_secret      - OrganizationレベルのDependabotシークレット
+  github_dependabot_organization_secret_repositories - Org Dependabotシークレットのリポジトリアクセス（一括）
+  github_dependabot_organization_secret_repository   - Org Dependabotシークレットのリポジトリアクセス（個別）
+
+【Codespaces】
+  github_codespaces_secret                   - リポジトリレベルのCodespacesシークレット
+  github_codespaces_organization_secret      - OrganizationレベルのCodespacesシークレット
+  github_codespaces_organization_secret_repositories - Org Codespacesシークレットのリポジトリアクセス
+  github_codespaces_user_secret              - ユーザーレベルのCodespacesシークレット
+
+【Enterprise (GitHub Enterprise)】
+  github_enterprise_organization             - Enterprise配下のOrganization管理
+  github_enterprise_actions_permissions      - EnterpriseレベルのActions権限
+  github_enterprise_actions_runner_group     - Enterpriseランナーグループ
+  github_enterprise_actions_workflow_permissions - Enterpriseワークフロー権限
+  github_enterprise_security_analysis_settings  - Enterpriseセキュリティ分析設定
+
+【その他】
+  github_issue                               - Issueの管理
+  github_issue_label                         - Issueラベル（個別）の管理
+  github_issue_labels                        - Issueラベル（一括）の管理
+  github_release                             - リリースの管理
+  github_project_card                        - プロジェクトカードの管理
+  github_project_column                      - プロジェクトカラムの管理
+  github_app_installation_repository         - GitHub Appインストールとリポジトリの関連付け（個別）
+  github_app_installation_repositories       - GitHub Appインストールとリポジトリの関連付け（一括）
+  github_user_gpg_key                        - ユーザーGPGキーの管理
+  github_user_ssh_key                        - ユーザーSSHキーの管理
+  github_user_invitation_accepter            - ユーザー招待の承認
+  github_emu_group_mapping                   - EMU（Enterprise Managed Users）グループマッピング
+
+
+=====================================
+データソース (Data Sources) — 読み取り専用で参照可能
+=====================================
+
+【Actions関連】
+  github_actions_environment_public_key      - 環境の公開鍵
+  github_actions_environment_secrets         - 環境シークレット一覧
+  github_actions_environment_variables       - 環境変数一覧
+  github_actions_organization_oidc_subject_claim_customization_template - Org OIDCカスタマイズテンプレート
+  github_actions_organization_public_key     - Organizationの公開鍵
+  github_actions_organization_registration_token - Organization登録トークン
+  github_actions_organization_secrets        - Organizationシークレット一覧
+  github_actions_organization_variables      - Organization変数一覧
+  github_actions_public_key                  - リポジトリの公開鍵
+  github_actions_registration_token          - リポジトリ登録トークン
+  github_actions_repository_oidc_subject_claim_customization_template - リポジトリOIDCカスタマイズテンプレート
+  github_actions_secrets                     - リポジトリシークレット一覧
+  github_actions_variables                   - リポジトリ変数一覧
+
+【ブランチ関連】
+  github_branch                              - ブランチ情報
+  github_branch_protection_rules             - ブランチ保護ルール一覧
+
+【Codespaces関連】
+  github_codespaces_organization_public_key  - OrganizationのCodespaces公開鍵
+  github_codespaces_organization_secrets     - OrganizationのCodespacesシークレット一覧
+  github_codespaces_public_key               - リポジトリのCodespaces公開鍵
+  github_codespaces_secrets                  - リポジトリのCodespacesシークレット一覧
+  github_codespaces_user_public_key          - ユーザーのCodespaces公開鍵
+  github_codespaces_user_secrets             - ユーザーのCodespacesシークレット一覧
+
+【Dependabot関連】
+  github_dependabot_organization_public_key  - OrganizationのDependabot公開鍵
+  github_dependabot_organization_secrets     - OrganizationのDependabotシークレット一覧
+  github_dependabot_public_key               - リポジトリのDependabot公開鍵
+  github_dependabot_secrets                  - リポジトリのDependabotシークレット一覧
+
+【Organization関連】
+  github_organization                        - Organization情報
+  github_organization_custom_role            - カスタムロール情報
+  github_organization_custom_properties      - Organizationカスタムプロパティ
+  github_organization_external_identities    - 外部ID一覧
+  github_organization_ip_allow_list          - IP許可リスト
+  github_organization_repository_role        - リポジトリロール情報
+  github_organization_repository_roles       - リポジトリロール一覧
+  github_organization_role                   - Organizationロール情報
+  github_organization_role_teams             - ロールに割り当てられたチーム一覧
+  github_organization_role_users             - ロールに割り当てられたユーザー一覧
+  github_organization_roles                  - Organizationロール一覧
+  github_organization_security_managers      - セキュリティマネージャー一覧
+  github_organization_team_sync_groups       - チーム同期グループ一覧
+  github_organization_teams                  - チーム一覧
+  github_organization_webhooks               - Webhook一覧
+  github_organization_app_installations      - Appインストール一覧
+
+【リポジトリ関連】
+  github_repository                          - リポジトリ情報
+  github_repositories                        - リポジトリ検索
+  github_repository_autolink_references      - オートリンク参照一覧
+  github_repository_branches                 - ブランチ一覧
+  github_repository_custom_properties        - リポジトリカスタムプロパティ
+  github_repository_environments             - 環境一覧
+  github_repository_deploy_keys              - デプロイキー一覧
+  github_repository_deployment_branch_policies - デプロイメントブランチポリシー一覧
+  github_repository_environment_deployment_policies - 環境デプロイメントポリシー一覧
+  github_repository_file                     - ファイル内容
+  github_repository_milestone                - マイルストーン情報
+  github_repository_pull_request             - プルリクエスト情報
+  github_repository_pull_requests            - プルリクエスト一覧
+  github_repository_teams                    - リポジトリに関連するチーム一覧
+  github_repository_webhooks                 - Webhook一覧
+
+【ユーザー関連】
+  github_user                                - ユーザー情報
+  github_users                               - 複数ユーザー情報
+  github_user_external_identity              - ユーザー外部ID
+  github_membership                          - メンバーシップ情報
+  github_collaborators                       - コラボレーター一覧
+
+【その他】
+  github_ip_ranges                           - GitHubのIPレンジ
+  github_ssh_keys                            - GitHubのSSH公開鍵一覧
+  github_ref                                 - Git ref情報
+  github_tree                                - Gitツリー情報
+  github_release                             - リリース情報
+  github_release_asset                       - リリースアセット情報
+  github_issue_labels                        - Issueラベル一覧
+  github_rest_api                            - REST API呼び出し
+  github_app                                 - GitHub App情報
+  github_app_token                           - GitHub Appトークン
+  github_external_groups                     - 外部グループ一覧
+  github_team                                - チーム情報
+  github_enterprise                          - Enterprise情報
+
+
+=====================================
+合計: リソース約85個 + データソース約74個
+=====================================
+
+参照元:
+  - https://github.com/integrations/terraform-provider-github/blob/main/github/provider.go
+  - https://registry.terraform.io/providers/integrations/github/latest/docs
