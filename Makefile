@@ -3,6 +3,7 @@
 # Initialize the project
 init:
 	direnv allow
+	terraform init
 
 # Authenticate with GitHub CLI with required scopes for Terraform
 auth:
