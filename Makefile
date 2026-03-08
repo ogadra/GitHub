@@ -4,6 +4,7 @@
 init:
 	direnv allow
 	terraform init
+	lefthook install
 
 # Authenticate with GitHub CLI with required scopes for Terraform
 auth:
