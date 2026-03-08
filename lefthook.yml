@@ -1,0 +1,19 @@
+pre-commit:
+  parallel: false
+  piped: true
+  commands:
+    # コードのフォーマットを自動修正
+    01_terraform_fmt:
+      glob: "*.tf"
+      stage_fixed: true
+      run: terraform fmt {staged_files}
+    # 設定ファイルの構文・整合性を検証
+    02_terraform_validate:
+      glob: "*.tf"
+      run: terraform validate
+
+pre-push:
+  parallel: true
+  commands:
+    terraform-validate:
+      run: terraform validate
