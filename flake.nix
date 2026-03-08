@@ -22,6 +22,7 @@
           packages = with pkgs; [
             terraform
             lefthook
+            gitleaks
           ];
         };
       }
