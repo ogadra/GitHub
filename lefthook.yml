@@ -11,8 +11,12 @@ pre-commit:
     02_terraform_validate:
       glob: "*.tf"
       run: terraform validate
+    # tflint による静的解析
+    03_tflint:
+      glob: "*.tf"
+      run: tflint --minimum-failure-severity=notice
     # シークレットの漏洩を検知
-    03_gitleaks:
+    04_gitleaks:
       run: gitleaks protect --staged --verbose
 
 pre-push:
@@ -20,5 +24,7 @@ pre-push:
   commands:
     terraform-validate:
       run: terraform validate
+    tflint:
+      run: tflint --minimum-failure-severity=notice
     gitleaks:
       run: gitleaks detect --verbose
