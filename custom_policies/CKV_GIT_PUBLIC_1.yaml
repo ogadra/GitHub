@@ -1,0 +1,13 @@
+metadata:
+  id: "CKV_GIT_PUBLIC_1"
+  name: "Ensure all GitHub repositories have public visibility"
+  category: "GENERAL_SECURITY"
+  severity: "CRITICAL"
+
+definition:
+  cond_type: "attribute"
+  resource_types:
+    - "github_repository"
+  attribute: "visibility"
+  operator: "equals"
+  value: "public"
