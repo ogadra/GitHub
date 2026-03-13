@@ -28,6 +28,20 @@ resource "github_repository" "github" {
   vulnerability_alerts = true # 脆弱性アラート有効
 }
 
+resource "github_branch_protection" "github_main" {
+  repository_id = github_repository.github.node_id
+  pattern       = "main"
+
+  allows_force_pushes    = false # force push禁止
+  allows_deletions       = false # ブランチ削除禁止
+  require_signed_commits = true  # 署名付きコミット必須
+
+  # mainへの直接pushを禁止し、PRを必須にする
+  required_pull_request_reviews {
+    required_approving_review_count = 0
+  }
+}
+
 resource "github_repository" "ogadra" {
   name       = "ogadra"
   visibility = "public"
@@ -47,4 +61,17 @@ resource "github_repository" "ogadra" {
   delete_branch_on_merge = true
 
   vulnerability_alerts = true
+}
+
+resource "github_branch_protection" "ogadra_main" {
+  repository_id = github_repository.ogadra.node_id
+  pattern       = "main"
+
+  allows_force_pushes    = false
+  allows_deletions       = false
+  require_signed_commits = true
+
+  required_pull_request_reviews {
+    required_approving_review_count = 0
+  }
 }
