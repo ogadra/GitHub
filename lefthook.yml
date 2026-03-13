@@ -18,7 +18,7 @@ pre-commit:
     # IaCのセキュリティスキャン
     04_checkov:
       glob: "*.tf"
-      run: checkov -d . --framework terraform --quiet --compact
+      run: checkov -d . --framework terraform --external-checks-dir ./custom_policies --quiet --compact
     # シークレットの漏洩を検知
     05_gitleaks:
       run: gitleaks protect --staged --verbose
@@ -33,4 +33,4 @@ pre-push:
     gitleaks:
       run: gitleaks detect --verbose
     checkov:
-      run: checkov -d . --framework terraform --quiet --compact
+      run: checkov -d . --framework terraform --external-checks-dir ./custom_policies --quiet --compact
