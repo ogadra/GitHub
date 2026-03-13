@@ -17,7 +17,7 @@ pre-commit:
       run: tflint --minimum-failure-severity=notice
     # セキュリティスキャン
     04_checkov:
-      run: checkov -d . --quiet --compact
+      run: checkov -d . --external-checks-dir ./custom_policies --quiet --compact
     # シークレットの漏洩を検知
     05_gitleaks:
       run: gitleaks protect --staged --verbose
@@ -32,4 +32,4 @@ pre-push:
     gitleaks:
       run: gitleaks detect --verbose
     checkov:
-      run: checkov -d . --quiet --compact
+      run: checkov -d . --external-checks-dir ./custom_policies --quiet --compact
