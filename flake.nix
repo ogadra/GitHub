@@ -24,6 +24,7 @@
             tflint
             lefthook
             gitleaks
+            checkov
           ];
         };
       }

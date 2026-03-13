@@ -15,8 +15,11 @@ pre-commit:
     03_tflint:
       glob: "*.tf"
       run: tflint --minimum-failure-severity=notice
+    # セキュリティスキャン
+    04_checkov:
+      run: checkov -d . --quiet --compact
     # シークレットの漏洩を検知
-    04_gitleaks:
+    05_gitleaks:
       run: gitleaks protect --staged --verbose
 
 pre-push:
@@ -28,3 +31,5 @@ pre-push:
       run: tflint --minimum-failure-severity=notice
     gitleaks:
       run: gitleaks detect --verbose
+    checkov:
+      run: checkov -d . --quiet --compact
