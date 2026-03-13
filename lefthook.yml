@@ -15,8 +15,12 @@ pre-commit:
     03_tflint:
       glob: "*.tf"
       run: tflint
+    # IaCのセキュリティスキャン
+    04_checkov:
+      glob: "*.tf"
+      run: checkov -d . --framework terraform --quiet --compact
     # シークレットの漏洩を検知
-    04_gitleaks:
+    05_gitleaks:
       run: gitleaks protect --staged --verbose
 
 pre-push:
@@ -28,3 +32,5 @@ pre-push:
       run: tflint
     gitleaks:
       run: gitleaks detect --verbose
+    checkov:
+      run: checkov -d . --framework terraform --quiet --compact

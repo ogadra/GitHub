@@ -1,0 +1,2 @@
+skip-check:
+  - CKV_GIT_1  # Ensure GitHub repository is Private
