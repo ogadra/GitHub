@@ -1,0 +1,21 @@
+# --- AWS S3 ---
+bucket       = ""
+key          = "terraform.tfstate"
+region       = ""
+encrypt      = true
+use_lockfile = true
+
+# --- Cloudflare R2 ---
+# bucket                      = ""
+# key                         = "terraform.tfstate"
+# region                      = "auto"
+# access_key                  = ""
+# secret_key                  = ""
+# endpoints                   = { s3 = "https://<ACCOUNT_ID>.r2.cloudflarestorage.com" }
+# skip_credentials_validation = true
+# skip_metadata_api_check     = true
+# skip_region_validation      = true
+# skip_requesting_account_id  = true
+# skip_s3_checksum            = true
+# use_path_style              = true
+# use_lockfile                = true
