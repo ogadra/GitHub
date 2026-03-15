@@ -1,0 +1,52 @@
+name: Plan
+
+on:
+  pull_request:
+
+permissions: {}
+
+concurrency:
+  group: terraform
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          token: ${{ secrets.PAT }}
+
+      - uses: actions/setup-go@4b73464bb391d4059bd26b0524d20df3927bd417 # v6.3.0
+        with:
+          go-version-file: tools/encrypt/go.mod
+
+      - run: go build .
+        working-directory: tools/encrypt
+
+      - uses: hashicorp/setup-terraform@5e8dbf3c6d9deaf4193ca7a8fb23f2ac83bb6c85 # v4.0.0
+
+      - uses: shmokmt/actions-setup-tfcmt@04d5aa6dc61eaa69a4d00257224c9b97f4857819 # v2.1.1
+
+      - run: cp repositories/github/secrets.json.example repositories/github/secrets.json
+
+      - run: |
+          terraform init \
+            -backend-config="bucket=${{ secrets.R2_BUCKET_NAME }}" \
+            -backend-config="key=terraform.tfstate" \
+            -backend-config="region=auto" \
+            -backend-config='endpoints={s3="https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com"}' \
+            -backend-config="skip_credentials_validation=true" \
+            -backend-config="skip_metadata_api_check=true" \
+            -backend-config="skip_region_validation=true" \
+            -backend-config="skip_requesting_account_id=true" \
+            -backend-config="skip_s3_checksum=true" \
+            -backend-config="use_lockfile=true"
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+
+      - run: tfcmt plan --patch -- terraform plan -no-color
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
