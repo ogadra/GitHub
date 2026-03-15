@@ -1,4 +1,5 @@
 .direnv/
+secrets.json
 
 # Terraform
 .terraform/
