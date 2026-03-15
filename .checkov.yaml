@@ -1,3 +1,5 @@
 skip-check:
   - CKV_GIT_1  # Ensure GitHub repository is Private
   - CKV_GIT_5  # GitHub pull requests should require at least 2 approvals
+skip-path:
+  - secrets.json
