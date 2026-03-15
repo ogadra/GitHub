@@ -1,0 +1,29 @@
+resource "github_repository" "github" {
+  # GitHubリポジトリ名。 github.com/ogadra/GitHub になる。
+  name = "GitHub"
+
+  # aboutセクションに表示されるリポジトリ説明
+  description = "Terraform repository to manage GitHub"
+
+  # リポジトリの公開設定。 public, private, internal(organizationの場合)のいずれかを指定
+  visibility = "public"
+
+  # リポジトリのトピックタグ
+  topics = [
+    "terraform",
+    "github",
+  ]
+
+  has_issues      = true  # Issue有効
+  has_discussions = false # Discussion無効
+  has_projects    = false # Project無効
+  has_wiki        = false # Wiki無効
+
+  allow_merge_commit     = true  # マージコミット可
+  allow_squash_merge     = false # スカッシュマージ不可
+  allow_rebase_merge     = false # リベースマージ不可
+  allow_auto_merge       = false # 自動マージ不可
+  delete_branch_on_merge = true  # マージ後ブランチ削除
+
+  vulnerability_alerts = true # 脆弱性アラート有効
+}
