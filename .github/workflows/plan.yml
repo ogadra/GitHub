@@ -52,7 +52,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
 
-      - run: tfcmt plan --patch --disable-label -- terraform plan -no-color
+      - run: tfcmt plan --patch -- terraform plan -no-color
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
