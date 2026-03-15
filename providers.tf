@@ -8,6 +8,10 @@ terraform {
       source  = "integrations/github"
       version = "~> 6.11"
     }
+    external = {
+      source  = "hashicorp/external"
+      version = "~> 2.3"
+    }
   }
 }
 
