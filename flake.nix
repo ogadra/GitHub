@@ -25,6 +25,7 @@
             lefthook
             gitleaks
             checkov
+            go_1_26
           ];
         };
       }
