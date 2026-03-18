@@ -3,19 +3,19 @@ resource "github_issue_labels" "github" {
 
   label {
     name        = "add-or-update"
-    color       = "1D76DB"
+    color       = "1d76db"
     description = "Terraform plan includes resource additions or updates"
   }
 
   label {
     name        = "destroy"
-    color       = "D93F0B"
+    color       = "d93f0b"
     description = "Terraform plan includes resource deletions or replacements"
   }
 
   label {
     name        = "no-changes"
-    color       = "0E8A16"
+    color       = "0e8a16"
     description = "Terraform plan has no changes"
   }
 }
