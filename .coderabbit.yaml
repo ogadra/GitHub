@@ -10,10 +10,9 @@ reviews:
   review_status: true
   collapse_walkthrough: true
   auto_apply_labels: false
-  auto_pause_after_reviewed_commits: 0
-
   auto_review:
     enabled: true
     drafts: false
+    auto_pause_after_reviewed_commits: 0
   path_filters:
-    - "!*.lock"
+    - "!**/*.lock"
