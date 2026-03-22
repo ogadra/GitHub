@@ -24,4 +24,10 @@ resource "github_issue_labels" "cli_demo" {
     color       = "009639"
     description = "Nginx microservice"
   }
+
+  label {
+    name        = "terraform"
+    color       = "7b42bc"
+    description = "Terraform"
+  }
 }
