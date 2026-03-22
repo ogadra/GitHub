@@ -18,4 +18,16 @@ resource "github_issue_labels" "github" {
     color       = "0e8a16"
     description = "Terraform plan has no changes"
   }
+
+  label {
+    name        = "dependencies"
+    color       = "0366d6"
+    description = "Pull requests that update a dependency file"
+  }
+
+  label {
+    name        = "github_actions"
+    color       = "000000"
+    description = "Pull requests that update GitHub Actions code"
+  }
 }
