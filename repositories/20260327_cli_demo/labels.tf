@@ -9,7 +9,7 @@ resource "github_issue_labels" "cli_demo" {
 
   label {
     name        = "runner"
-    color       = "f0ad00"
+    color       = "5277c3"
     description = "Runner microservice"
   }
 
@@ -23,6 +23,12 @@ resource "github_issue_labels" "cli_demo" {
     name        = "nginx"
     color       = "009639"
     description = "Nginx microservice"
+  }
+
+  label {
+    name        = "presenter"
+    color       = "ff9900"
+    description = "Presenter microservice"
   }
 
   label {
