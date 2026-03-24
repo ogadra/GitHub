@@ -27,7 +27,7 @@ jobs:
 
       - uses: shmokmt/actions-setup-tfcmt@04d5aa6dc61eaa69a4d00257224c9b97f4857819 # v2.1.1
 
-      - run: cp repositories/github/secrets.json.example repositories/github/secrets.json
+      - run: find repositories -name 'secrets.json.example' -exec sh -c 'cp "$1" "${1%.example}"' _ {} \;
 
       - run: |
           terraform init \
