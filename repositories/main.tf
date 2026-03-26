@@ -6,6 +6,6 @@ module "ogadra" {
   source = "./ogadra"
 }
 
-module "cli_demo_20230327" {
+module "cli_demo_20260327" {
   source = "./20260327_cli_demo"
 }
