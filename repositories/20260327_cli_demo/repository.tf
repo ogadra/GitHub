@@ -2,6 +2,9 @@ resource "github_repository" "cli_demo_20260327" {
   name       = "20260327-cli-demo"
   visibility = "public"
   topics = [
+    "cli",
+    "go",
+    "react",
     "terraform",
   ]
 
