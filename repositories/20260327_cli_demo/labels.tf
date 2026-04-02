@@ -48,4 +48,10 @@ resource "github_issue_labels" "cli_demo" {
     color       = "000000"
     description = "Pull requests that update GitHub Actions code"
   }
+
+  label {
+    name        = "docker"
+    color       = "21ceff"
+    description = "Pull requests that update docker code"
+  }
 }
