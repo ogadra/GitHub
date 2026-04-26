@@ -17,3 +17,7 @@ module "bunshin" {
 module "nix_takt" {
   source = "./nix_takt"
 }
+
+module "nix_claude_code" {
+  source = "./nix_claude_code"
+}
