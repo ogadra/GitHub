@@ -13,3 +13,7 @@ module "cli_demo_20260327" {
 module "bunshin" {
   source = "./bunshin"
 }
+
+module "nix_takt" {
+  source = "./nix_takt"
+}
