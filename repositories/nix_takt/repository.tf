@@ -13,7 +13,7 @@ resource "github_repository" "nix_takt" {
   allow_merge_commit     = true
   allow_squash_merge     = false
   allow_rebase_merge     = false
-  allow_auto_merge       = false
+  allow_auto_merge       = true
   delete_branch_on_merge = true
 
   vulnerability_alerts = true
