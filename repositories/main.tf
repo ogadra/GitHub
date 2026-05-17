@@ -21,3 +21,7 @@ module "nix_takt" {
 module "nix_claude_code" {
   source = "./nix_claude_code"
 }
+
+module "slide" {
+  source = "./slide"
+}
