@@ -93,3 +93,7 @@ module "poisson" {
 module "twitter_analysis" {
   source = "./twitter_analysis"
 }
+
+module "april_fool2020" {
+  source = "./april_fool2020"
+}
