@@ -62,6 +62,10 @@ module "home_automation" {
   source = "./home_automation"
 }
 
+module "hono_and_remix_on_vite_at_workers" {
+  source = "./hono_and_remix_on_vite_at_workers"
+}
+
 module "hono_react_router_adapter" {
   source = "./hono_react_router_adapter"
 }
