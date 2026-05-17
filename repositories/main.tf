@@ -69,3 +69,7 @@ module "go_rest_sample" {
 module "at_coder_opener" {
   source = "./at_coder_opener"
 }
+
+module "adverb" {
+  source = "./adverb"
+}
