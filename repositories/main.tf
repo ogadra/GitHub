@@ -29,3 +29,7 @@ module "slide" {
 module "mokuroku" {
   source = "./mokuroku"
 }
+
+module "dotfiles" {
+  source = "./dotfiles"
+}
