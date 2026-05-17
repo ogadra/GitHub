@@ -50,6 +50,10 @@ module "home_automation" {
   source = "./home_automation"
 }
 
+module "hono_react_router_adapter" {
+  source = "./hono_react_router_adapter"
+}
+
 module "lambda_demo_20260220" {
   source = "./20260220_lambda_demo"
 }
@@ -72,6 +76,10 @@ module "ogadra" {
 
 module "onepassword_docker_access" {
   source = "./onepassword_docker_access"
+}
+
+module "playwright" {
+  source = "./playwright"
 }
 
 module "poisson" {
