@@ -61,3 +61,7 @@ module "onepassword_docker_access" {
 module "home_automation" {
   source = "./home_automation"
 }
+
+module "go_rest_sample" {
+  source = "./go_rest_sample"
+}
