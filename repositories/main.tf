@@ -34,6 +34,10 @@ module "daien" {
   source = "./daien"
 }
 
+module "development_guide" {
+  source = "./development_guide"
+}
+
 module "dotfiles" {
   source = "./dotfiles"
 }
