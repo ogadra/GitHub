@@ -98,6 +98,10 @@ module "onepassword_docker_access" {
   source = "./onepassword_docker_access"
 }
 
+module "phpmd" {
+  source = "./phpmd"
+}
+
 module "playwright" {
   source = "./playwright"
 }
