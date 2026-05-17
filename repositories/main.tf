@@ -77,3 +77,7 @@ module "adverb" {
 module "word_difference_rate" {
   source = "./word_difference_rate"
 }
+
+module "google_calendar_extention" {
+  source = "./google_calendar_extention"
+}
