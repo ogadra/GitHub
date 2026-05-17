@@ -50,6 +50,10 @@ module "home_automation" {
   source = "./home_automation"
 }
 
+module "hono_react_router_adapter" {
+  source = "./hono_react_router_adapter"
+}
+
 module "lambda_demo_20260220" {
   source = "./20260220_lambda_demo"
 }
