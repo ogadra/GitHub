@@ -6,6 +6,10 @@ module "cli_demo_20260327" {
   source = "./20260327_cli_demo"
 }
 
+module "dotfiles" {
+  source = "./dotfiles"
+}
+
 module "github" {
   source = "./github"
 }
