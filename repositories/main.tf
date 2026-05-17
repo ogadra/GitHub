@@ -6,6 +6,10 @@ module "at_coder_opener" {
   source = "./at_coder_opener"
 }
 
+module "awesome_matching" {
+  source = "./awesome_matching"
+}
+
 module "bunshin" {
   source = "./bunshin"
 }
