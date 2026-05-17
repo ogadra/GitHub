@@ -41,3 +41,7 @@ module "lambda_demo_20260220" {
 module "daien" {
   source = "./daien"
 }
+
+module "self_hosted_runner" {
+  source = "./self_hosted_runner"
+}
