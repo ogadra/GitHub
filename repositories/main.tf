@@ -26,6 +26,10 @@ module "cli_demo_20260327" {
   source = "./20260327_cli_demo"
 }
 
+module "coji_zenn_content" {
+  source = "./coji_zenn_content"
+}
+
 module "daien" {
   source = "./daien"
 }
@@ -112,6 +116,10 @@ module "slide" {
 
 module "takt" {
   source = "./takt"
+}
+
+module "test_like_koume_dayu" {
+  source = "./test_like_koume_dayu"
 }
 
 module "twitter_analysis" {
