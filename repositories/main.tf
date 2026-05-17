@@ -25,3 +25,7 @@ module "nix_claude_code" {
 module "slide" {
   source = "./slide"
 }
+
+module "mokuroku" {
+  source = "./mokuroku"
+}
