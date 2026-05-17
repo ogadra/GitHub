@@ -57,3 +57,7 @@ module "react_graph_sample" {
 module "onepassword_docker_access" {
   source = "./onepassword_docker_access"
 }
+
+module "home_automation" {
+  source = "./home_automation"
+}
