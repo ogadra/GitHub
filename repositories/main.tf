@@ -49,3 +49,7 @@ module "self_hosted_runner" {
 module "empty_variable_in_wrangler" {
   source = "./empty_variable_in_wrangler"
 }
+
+module "react_graph_sample" {
+  source = "./react_graph_sample"
+}
