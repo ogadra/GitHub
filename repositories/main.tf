@@ -94,6 +94,10 @@ module "ogadra" {
   source = "./ogadra"
 }
 
+module "ojicord" {
+  source = "./ojicord"
+}
+
 module "onepassword_docker_access" {
   source = "./onepassword_docker_access"
 }
