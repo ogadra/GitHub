@@ -30,6 +30,10 @@ module "dotfiles" {
   source = "./dotfiles"
 }
 
+module "elden_mail_banner" {
+  source = "./elden_mail_banner"
+}
+
 module "empty_variable_in_wrangler" {
   source = "./empty_variable_in_wrangler"
 }
