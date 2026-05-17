@@ -101,3 +101,7 @@ module "april_fool2020" {
 module "takt" {
   source = "./takt"
 }
+
+module "awesome_matching" {
+  source = "./awesome_matching"
+}
