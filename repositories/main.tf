@@ -10,6 +10,10 @@ module "github" {
   source = "./github"
 }
 
+module "mokuroku" {
+  source = "./mokuroku"
+}
+
 module "nix_claude_code" {
   source = "./nix_claude_code"
 }
