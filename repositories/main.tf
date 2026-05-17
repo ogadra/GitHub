@@ -118,6 +118,10 @@ module "poisson" {
   source = "./poisson"
 }
 
+module "poke_controller_modified" {
+  source = "./poke_controller_modified"
+}
+
 module "react_graph_sample" {
   source = "./react_graph_sample"
 }
