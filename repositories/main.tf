@@ -34,6 +34,10 @@ module "go_rest_sample" {
   source = "./go_rest_sample"
 }
 
+module "google_calendar_extention" {
+  source = "./google_calendar_extention"
+}
+
 module "home_automation" {
   source = "./home_automation"
 }
@@ -68,6 +72,10 @@ module "react_graph_sample" {
 
 module "self_hosted_runner" {
   source = "./self_hosted_runner"
+}
+
+module "site_error_checker" {
+  source = "./site_error_checker"
 }
 
 module "slide" {
