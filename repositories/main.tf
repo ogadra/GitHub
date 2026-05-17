@@ -81,3 +81,7 @@ module "word_difference_rate" {
 module "google_calendar_extention" {
   source = "./google_calendar_extention"
 }
+
+module "site_error_checker" {
+  source = "./site_error_checker"
+}
