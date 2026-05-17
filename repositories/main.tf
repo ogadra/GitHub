@@ -1,3 +1,7 @@
+module "adachin_dotfiles" {
+  source = "./adachin_dotfiles"
+}
+
 module "adverb" {
   source = "./adverb"
 }
