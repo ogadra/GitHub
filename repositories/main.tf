@@ -89,3 +89,7 @@ module "site_error_checker" {
 module "poisson" {
   source = "./poisson"
 }
+
+module "twitter_analysis" {
+  source = "./twitter_analysis"
+}
