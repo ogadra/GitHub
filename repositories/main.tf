@@ -34,6 +34,10 @@ module "go_rest_sample" {
   source = "./go_rest_sample"
 }
 
+module "google_calendar_extention" {
+  source = "./google_calendar_extention"
+}
+
 module "home_automation" {
   source = "./home_automation"
 }
@@ -62,6 +66,10 @@ module "onepassword_docker_access" {
   source = "./onepassword_docker_access"
 }
 
+module "poisson" {
+  source = "./poisson"
+}
+
 module "react_graph_sample" {
   source = "./react_graph_sample"
 }
@@ -70,12 +78,20 @@ module "self_hosted_runner" {
   source = "./self_hosted_runner"
 }
 
+module "site_error_checker" {
+  source = "./site_error_checker"
+}
+
 module "slide" {
   source = "./slide"
 }
 
 module "takt" {
   source = "./takt"
+}
+
+module "twitter_analysis" {
+  source = "./twitter_analysis"
 }
 
 module "word_difference_rate" {
