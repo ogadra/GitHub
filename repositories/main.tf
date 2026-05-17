@@ -73,3 +73,7 @@ module "at_coder_opener" {
 module "adverb" {
   source = "./adverb"
 }
+
+module "word_difference_rate" {
+  source = "./word_difference_rate"
+}
