@@ -74,6 +74,10 @@ module "intern_line_bot" {
   source = "./intern_line_bot"
 }
 
+module "kura_bot" {
+  source = "./kura_bot"
+}
+
 module "lambda_demo_20260220" {
   source = "./20260220_lambda_demo"
 }
