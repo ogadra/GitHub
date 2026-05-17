@@ -74,6 +74,10 @@ module "onepassword_docker_access" {
   source = "./onepassword_docker_access"
 }
 
+module "playwright" {
+  source = "./playwright"
+}
+
 module "poisson" {
   source = "./poisson"
 }
