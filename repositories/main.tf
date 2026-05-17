@@ -77,3 +77,7 @@ module "slide" {
 module "takt" {
   source = "./takt"
 }
+
+module "word_difference_rate" {
+  source = "./word_difference_rate"
+}
