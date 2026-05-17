@@ -1,3 +1,7 @@
+module "adverb" {
+  source = "./adverb"
+}
+
 module "at_coder_opener" {
   source = "./at_coder_opener"
 }
