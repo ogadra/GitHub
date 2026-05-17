@@ -65,3 +65,7 @@ module "home_automation" {
 module "go_rest_sample" {
   source = "./go_rest_sample"
 }
+
+module "at_coder_opener" {
+  source = "./at_coder_opener"
+}
