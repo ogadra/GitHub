@@ -97,3 +97,7 @@ module "twitter_analysis" {
 module "april_fool2020" {
   source = "./april_fool2020"
 }
+
+module "takt" {
+  source = "./takt"
+}
