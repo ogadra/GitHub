@@ -53,3 +53,7 @@ module "empty_variable_in_wrangler" {
 module "react_graph_sample" {
   source = "./react_graph_sample"
 }
+
+module "onepassword_docker_access" {
+  source = "./onepassword_docker_access"
+}
