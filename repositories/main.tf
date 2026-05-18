@@ -74,6 +74,10 @@ module "self_hosted_runner" {
   source = "./self_hosted_runner"
 }
 
+module "site_error_checker" {
+  source = "./site_error_checker"
+}
+
 module "slide" {
   source = "./slide"
 }
