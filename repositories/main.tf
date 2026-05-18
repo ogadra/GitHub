@@ -38,6 +38,10 @@ module "ogadra" {
   source = "./ogadra"
 }
 
+module "self_hosted_runner" {
+  source = "./self_hosted_runner"
+}
+
 module "slide" {
   source = "./slide"
 }
