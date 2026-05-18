@@ -1,3 +1,7 @@
+module "at_coder_opener" {
+  source = "./at_coder_opener"
+}
+
 module "bunshin" {
   source = "./bunshin"
 }
