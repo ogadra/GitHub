@@ -14,6 +14,10 @@ module "dotfiles" {
   source = "./dotfiles"
 }
 
+module "empty_variable_in_wrangler" {
+  source = "./empty_variable_in_wrangler"
+}
+
 module "github" {
   source = "./github"
 }
