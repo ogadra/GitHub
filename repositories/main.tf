@@ -166,6 +166,10 @@ module "slide" {
   source = "./slide"
 }
 
+module "stop_twitter" {
+  source = "./stop_twitter"
+}
+
 module "takt" {
   source = "./takt"
 }
