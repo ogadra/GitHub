@@ -22,6 +22,10 @@ module "github" {
   source = "./github"
 }
 
+module "go_rest_sample" {
+  source = "./go_rest_sample"
+}
+
 module "home_automation" {
   source = "./home_automation"
 }
