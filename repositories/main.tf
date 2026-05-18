@@ -42,6 +42,10 @@ module "ogadra" {
   source = "./ogadra"
 }
 
+module "onepassword_docker_access" {
+  source = "./onepassword_docker_access"
+}
+
 module "react_graph_sample" {
   source = "./react_graph_sample"
 }
