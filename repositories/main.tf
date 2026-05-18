@@ -42,6 +42,10 @@ module "conform" {
   source = "./conform"
 }
 
+module "conform_to_valibot" {
+  source = "./conform_to_valibot"
+}
+
 module "daien" {
   source = "./daien"
 }
