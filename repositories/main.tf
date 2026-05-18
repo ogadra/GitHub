@@ -138,6 +138,10 @@ module "self_hosted_runner" {
   source = "./self_hosted_runner"
 }
 
+module "siro53_com" {
+  source = "./siro53_com"
+}
+
 module "site_error_checker" {
   source = "./site_error_checker"
 }
