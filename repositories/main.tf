@@ -42,6 +42,10 @@ module "ogadra" {
   source = "./ogadra"
 }
 
+module "react_graph_sample" {
+  source = "./react_graph_sample"
+}
+
 module "self_hosted_runner" {
   source = "./self_hosted_runner"
 }
