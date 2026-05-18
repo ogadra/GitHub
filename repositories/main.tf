@@ -118,6 +118,10 @@ module "phpmd" {
   source = "./phpmd"
 }
 
+module "plantuml_parser" {
+  source = "./plantuml_parser"
+}
+
 module "playwright" {
   source = "./playwright"
 }
