@@ -10,6 +10,10 @@ module "air" {
   source = "./air"
 }
 
+module "all_mute" {
+  source = "./all_mute"
+}
+
 module "april_fool2020" {
   source = "./april_fool2020"
 }
