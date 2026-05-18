@@ -22,6 +22,10 @@ module "github" {
   source = "./github"
 }
 
+module "home_automation" {
+  source = "./home_automation"
+}
+
 module "lambda_demo_20260220" {
   source = "./20260220_lambda_demo"
 }
