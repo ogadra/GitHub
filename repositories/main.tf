@@ -1,27 +1,91 @@
-module "github" {
-  source = "./github"
+module "adverb" {
+  source = "./adverb"
 }
 
-module "ogadra" {
-  source = "./ogadra"
-}
-
-module "cli_demo_20260327" {
-  source = "./20260327_cli_demo"
+module "at_coder_opener" {
+  source = "./at_coder_opener"
 }
 
 module "bunshin" {
   source = "./bunshin"
 }
 
-module "nix_takt" {
-  source = "./nix_takt"
+module "cli_demo_20260327" {
+  source = "./20260327_cli_demo"
+}
+
+module "daien" {
+  source = "./daien"
+}
+
+module "dotfiles" {
+  source = "./dotfiles"
+}
+
+module "empty_variable_in_wrangler" {
+  source = "./empty_variable_in_wrangler"
+}
+
+module "github" {
+  source = "./github"
+}
+
+module "go_rest_sample" {
+  source = "./go_rest_sample"
+}
+
+module "google_calendar_extention" {
+  source = "./google_calendar_extention"
+}
+
+module "home_automation" {
+  source = "./home_automation"
+}
+
+module "lambda_demo_20260220" {
+  source = "./20260220_lambda_demo"
+}
+
+module "mokuroku" {
+  source = "./mokuroku"
 }
 
 module "nix_claude_code" {
   source = "./nix_claude_code"
 }
 
+module "nix_takt" {
+  source = "./nix_takt"
+}
+
+module "ogadra" {
+  source = "./ogadra"
+}
+
+module "onepassword_docker_access" {
+  source = "./onepassword_docker_access"
+}
+
+module "react_graph_sample" {
+  source = "./react_graph_sample"
+}
+
+module "self_hosted_runner" {
+  source = "./self_hosted_runner"
+}
+
+module "site_error_checker" {
+  source = "./site_error_checker"
+}
+
+module "slide" {
+  source = "./slide"
+}
+
 module "takt" {
   source = "./takt"
+}
+
+module "word_difference_rate" {
+  source = "./word_difference_rate"
 }
