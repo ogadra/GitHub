@@ -170,6 +170,10 @@ module "slide" {
   source = "./slide"
 }
 
+module "spotify_via_terminal" {
+  source = "./spotify_via_terminal"
+}
+
 module "stop_twitter" {
   source = "./stop_twitter"
 }
