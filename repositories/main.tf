@@ -90,6 +90,10 @@ module "playwright" {
   source = "./playwright"
 }
 
+module "playwright_mcp" {
+  source = "./playwright_mcp"
+}
+
 module "poisson" {
   source = "./poisson"
 }
