@@ -2,6 +2,10 @@ module "adverb" {
   source = "./adverb"
 }
 
+module "april_fool2020" {
+  source = "./april_fool2020"
+}
+
 module "at_coder_opener" {
   source = "./at_coder_opener"
 }
