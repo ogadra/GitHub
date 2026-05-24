@@ -138,6 +138,10 @@ module "phpmd" {
   source = "./phpmd"
 }
 
+module "phrase_cutter" {
+  source = "./phrase_cutter"
+}
+
 module "plantuml_parser" {
   source = "./plantuml_parser"
 }
