@@ -165,3 +165,7 @@ module "voice_notify_bot" {
 module "word_difference_rate" {
   source = "./word_difference_rate"
 }
+
+module "yaml_cv" {
+  source = "./yaml_cv"
+}
