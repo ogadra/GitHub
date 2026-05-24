@@ -86,6 +86,10 @@ module "hono_react_router_adapter" {
   source = "./hono_react_router_adapter"
 }
 
+module "intern_line_bot" {
+  source = "./intern_line_bot"
+}
+
 module "ja_docs_11_x" {
   source = "./ja_docs_11_x"
 }
