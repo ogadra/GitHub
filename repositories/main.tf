@@ -130,6 +130,10 @@ module "takt" {
   source = "./takt"
 }
 
+module "test_like_koume_dayu" {
+  source = "./test_like_koume_dayu"
+}
+
 module "twitter_analysis" {
   source = "./twitter_analysis"
 }
