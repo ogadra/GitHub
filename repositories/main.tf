@@ -1,3 +1,7 @@
+module "adachin_dotfiles" {
+  source = "./adachin_dotfiles"
+}
+
 module "adverb" {
   source = "./adverb"
 }
@@ -8,6 +12,10 @@ module "april_fool2020" {
 
 module "at_coder_opener" {
   source = "./at_coder_opener"
+}
+
+module "awesome_matching" {
+  source = "./awesome_matching"
 }
 
 module "bunshin" {
@@ -68,6 +76,10 @@ module "ogadra" {
 
 module "onepassword_docker_access" {
   source = "./onepassword_docker_access"
+}
+
+module "playwright" {
+  source = "./playwright"
 }
 
 module "poisson" {
