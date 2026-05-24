@@ -90,6 +90,10 @@ module "takt" {
   source = "./takt"
 }
 
+module "twitter_analysis" {
+  source = "./twitter_analysis"
+}
+
 module "word_difference_rate" {
   source = "./word_difference_rate"
 }
