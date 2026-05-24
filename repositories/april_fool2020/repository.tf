@@ -16,4 +16,12 @@ resource "github_repository" "april_fool2020" {
   delete_branch_on_merge = true
 
   vulnerability_alerts = true
+
+  pages {
+    build_type = "legacy"
+    source {
+      branch = "master"
+      path   = "/"
+    }
+  }
 }
