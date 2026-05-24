@@ -94,6 +94,10 @@ module "ja_docs_11_x" {
   source = "./ja_docs_11_x"
 }
 
+module "kura_bot" {
+  source = "./kura_bot"
+}
+
 module "lambda_demo_20260220" {
   source = "./20260220_lambda_demo"
 }
