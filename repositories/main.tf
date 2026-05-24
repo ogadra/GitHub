@@ -150,6 +150,10 @@ module "twitter_analysis" {
   source = "./twitter_analysis"
 }
 
+module "voice_notify_bot" {
+  source = "./voice_notify_bot"
+}
+
 module "word_difference_rate" {
   source = "./word_difference_rate"
 }
