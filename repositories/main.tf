@@ -217,3 +217,7 @@ module "word_difference_rate" {
 module "yaml_cv" {
   source = "./yaml_cv"
 }
+
+module "zenn_content" {
+  source = "./zenn_content"
+}
