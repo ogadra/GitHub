@@ -134,6 +134,10 @@ module "onepassword_docker_access" {
   source = "./onepassword_docker_access"
 }
 
+module "party_make" {
+  source = "./party_make"
+}
+
 module "phpmd" {
   source = "./phpmd"
 }
