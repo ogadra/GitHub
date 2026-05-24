@@ -30,6 +30,10 @@ module "cli_demo_20260327" {
   source = "./20260327_cli_demo"
 }
 
+module "coji_zenn_content" {
+  source = "./coji_zenn_content"
+}
+
 module "conform" {
   source = "./conform"
 }
