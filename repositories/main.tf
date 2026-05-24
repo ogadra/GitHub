@@ -6,6 +6,10 @@ module "adverb" {
   source = "./adverb"
 }
 
+module "air" {
+  source = "./air"
+}
+
 module "april_fool2020" {
   source = "./april_fool2020"
 }
