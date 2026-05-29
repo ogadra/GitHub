@@ -9,8 +9,8 @@ resource "github_repository" "party_make" {
 
   has_issues      = true
   has_discussions = false
-  has_projects    = false
-  has_wiki        = false
+  has_projects    = true
+  has_wiki        = true
 
   allow_merge_commit     = true
   allow_squash_merge     = false
@@ -18,5 +18,5 @@ resource "github_repository" "party_make" {
   allow_auto_merge       = false
   delete_branch_on_merge = true
 
-  vulnerability_alerts = true
+  vulnerability_alerts = false
 }

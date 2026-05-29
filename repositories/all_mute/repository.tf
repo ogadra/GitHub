@@ -1,16 +1,17 @@
 resource "github_repository" "all_mute" {
   # checkov:skip=CKV2_GIT_1: archived repository, branch protection not applicable
-  name        = "allMute"
-  description = ""
-  visibility  = "public"
-  topics      = []
+  name         = "allMute"
+  description  = ""
+  homepage_url = "all-mute.vercel.app"
+  visibility   = "public"
+  topics       = []
 
   archived = true
 
   has_issues      = true
   has_discussions = false
-  has_projects    = false
-  has_wiki        = false
+  has_projects    = true
+  has_wiki        = true
 
   allow_merge_commit     = true
   allow_squash_merge     = false
@@ -18,5 +19,5 @@ resource "github_repository" "all_mute" {
   allow_auto_merge       = false
   delete_branch_on_merge = true
 
-  vulnerability_alerts = true
+  vulnerability_alerts = false
 }
