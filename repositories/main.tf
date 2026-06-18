@@ -30,6 +30,10 @@ module "bunshin" {
   source = "./bunshin"
 }
 
+module "cf_infra" {
+  source = "./cf_infra"
+}
+
 module "claude_code_action" {
   source = "./claude_code_action"
 }
