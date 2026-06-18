@@ -42,4 +42,10 @@ resource "github_issue_labels" "bunshin" {
     color       = "21ceff"
     description = "Pull requests that update docker code"
   }
+
+  label {
+    name        = "go"
+    color       = "16e2e2"
+    description = "Pull requests that update go code"
+  }
 }

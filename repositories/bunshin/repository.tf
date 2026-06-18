@@ -17,6 +17,4 @@ resource "github_repository" "bunshin" {
   allow_rebase_merge     = false
   allow_auto_merge       = false
   delete_branch_on_merge = true
-
-  vulnerability_alerts = true
 }
