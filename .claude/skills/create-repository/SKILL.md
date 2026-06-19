@@ -4,7 +4,7 @@ description: Add a new GitHub repository module to this Terraform repo and open 
 allowed-tools: Bash(git switch:*), Bash(git add:*), Bash(git status:*), Bash(git diff:*), Bash(git commit:*), Bash(git push:*), Bash(git branch:*), Bash(terraform fmt:*), Bash(terraform validate:*), Bash(terraform init:*), Bash(tflint:*), Bash(checkov:*), Bash(gitleaks:*), Bash(gh pr create:*), Write, Edit, Read
 ---
 
-# Add Repository
+# Create Repository
 
 このリポジトリ（`integrations/github` provider で GitHub リポジトリ群を Terraform 管理）に、新しいリポジトリを作成するモジュールを追加し、PR を作成する。
 
@@ -18,14 +18,14 @@ allowed-tools: Bash(git switch:*), Bash(git add:*), Bash(git status:*), Bash(git
 - 説明 `description`（任意, 空文字可）
 - トピック `topics`（任意, 例: `["terraform", "cloudflare"]`）
 - fork かどうか（fork の場合は `source_owner` / `source_repo` が必要）
-- 可視性 `visibility` - `public`以外許容しない。privateリポジトリはこのリポジトリで管理しない。
+- 可視性 `visibility`（`public` 固定。private リポジトリはここでは管理しない）
 
 ## 手順
 
 ### 1. ブランチを作成
 
 ```bash
-git switch -c feat/add-<module_name>-repository
+git switch -c feat/create-<module_name>-repository
 ```
 
 ### 2. モジュールディレクトリと 3 ファイルを作成
