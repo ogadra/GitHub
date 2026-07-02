@@ -130,6 +130,10 @@ module "ogadra" {
   source = "./ogadra"
 }
 
+module "ogadra_net" {
+  source = "./ogadra_net"
+}
+
 module "ojicord" {
   source = "./ojicord"
 }
