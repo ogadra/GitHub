@@ -48,4 +48,16 @@ resource "github_issue_labels" "bunshin" {
     color       = "16e2e2"
     description = "Pull requests that update go code"
   }
+
+  label {
+    name        = "integration"
+    color       = "cfd3d7"
+    description = "Integration tests"
+  }
+
+  label {
+    name        = "front"
+    color       = "f9d0c4"
+    description = "Frontend"
+  }
 }
