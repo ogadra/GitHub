@@ -170,6 +170,10 @@ module "poisson" {
   source = "./poisson"
 }
 
+module "portfolio" {
+  source = "./portfolio"
+}
+
 module "poke_controller_modified" {
   source = "./poke_controller_modified"
 }
