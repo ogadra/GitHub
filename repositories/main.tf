@@ -218,6 +218,10 @@ module "twitter_analysis" {
   source = "./twitter_analysis"
 }
 
+module "uuid_janken_tie" {
+  source = "./uuid_janken_tie"
+}
+
 module "voice_notify_bot" {
   source = "./voice_notify_bot"
 }
