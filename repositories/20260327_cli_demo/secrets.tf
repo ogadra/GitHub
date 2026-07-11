@@ -3,7 +3,7 @@ data "github_actions_public_key" "cli_demo_20260327" {
 }
 
 data "external" "encrypted_secrets" {
-  program = ["${path.root}/tools/encrypt/encrypt"]
+  program = ["${path.module}/../../tools/encrypt/encrypt"]
 
   query = {
     key  = data.github_actions_public_key.cli_demo_20260327.key
@@ -28,7 +28,7 @@ data "github_dependabot_public_key" "cli_demo_20260327" {
 }
 
 data "external" "encrypted_dependabot_secrets" {
-  program = ["${path.root}/tools/encrypt/encrypt"]
+  program = ["${path.module}/../../tools/encrypt/encrypt"]
 
   query = {
     key  = data.github_dependabot_public_key.cli_demo_20260327.key

@@ -18,10 +18,17 @@ make auth
 
 ## 使い方
 
+repository ごとに Terraform root と state を分けています。
+
 ```bash
+cd repositories/github
 terraform plan
 terraform apply
 ```
+
+S3 backend の key は `repositories/<repository>/terraform.tfstate` です。
+
+既存の全体 state から分割 state へ移行する場合は [docs/state-migration.md](docs/state-migration.md) を参照してください。
 
 ## ラベル管理
 

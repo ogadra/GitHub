@@ -9,8 +9,33 @@ concurrency:
   group: terraform
 
 jobs:
-  plan:
+  list-repositories:
     runs-on: ubuntu-latest
+    outputs:
+      repositories: ${{ steps.repositories.outputs.repositories }}
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          token: ${{ secrets.PAT }}
+
+      - id: repositories
+        run: |
+          repositories=$(
+            find repositories -mindepth 1 -maxdepth 1 -type d -not -name .terraform \
+              | sed 's#^repositories/##' \
+              | sort \
+              | jq -R -s -c 'split("\n")[:-1]'
+          )
+
+          echo "repositories=${repositories}" >> "$GITHUB_OUTPUT"
+
+  plan:
+    needs: list-repositories
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        repository: ${{ fromJson(needs.list-repositories.outputs.repositories) }}
     steps:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
         with:
@@ -27,12 +52,12 @@ jobs:
 
       - uses: shmokmt/actions-setup-tfcmt@04d5aa6dc61eaa69a4d00257224c9b97f4857819 # v2.1.1
 
-      - run: find repositories -name 'secrets.json.example' -exec sh -c 'cp "$1" "${1%.example}"' _ {} \;
+      - run: find "repositories/${{ matrix.repository }}" -name 'secrets.json.example' -exec sh -c 'cp "$1" "${1%.example}"' _ {} \;
 
       - run: |
-          terraform init \
+          TF_CLI_ARGS_init= terraform -chdir="repositories/${{ matrix.repository }}" init -upgrade \
             -backend-config="bucket=${{ secrets.R2_BUCKET_NAME }}" \
-            -backend-config="key=terraform.tfstate" \
+            -backend-config="key=repositories/${{ matrix.repository }}/terraform.tfstate" \
             -backend-config="region=auto" \
             -backend-config='endpoints={s3="https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com"}' \
             -backend-config="skip_credentials_validation=true" \
@@ -45,7 +70,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
 
-      - run: tfcmt plan --patch -- terraform plan -no-color
+      - run: tfcmt plan --patch -- terraform -chdir="repositories/${{ matrix.repository }}" plan -no-color
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
