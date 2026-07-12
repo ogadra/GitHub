@@ -1,8 +1,9 @@
 resource "github_repository" "uuid_janken_tie" {
-  name        = "uuid-janken-tie"
-  description = ""
-  visibility  = "public"
-  topics      = []
+  name         = "uuid-janken-tie"
+  description  = "UUIDじゃんけん(uuid-janken.mimifuwa.cc)を常にあいこにするChrome拡張機能"
+  homepage_url = "https://chromewebstore.google.com/detail/uuid%E3%81%82%E3%81%84%E3%81%93/mlaihdbehockndegmgpbpmgcomgpledl"
+  visibility   = "public"
+  topics       = []
 
   has_issues      = true
   has_discussions = false
