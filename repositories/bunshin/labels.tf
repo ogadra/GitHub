@@ -50,6 +50,12 @@ resource "github_issue_labels" "bunshin" {
   }
 
   label {
+    name        = "justfile"
+    color       = "bfd4f2"
+    description = "justfile"
+  }
+
+  label {
     name        = "integration"
     color       = "cfd3d7"
     description = "Integration tests"

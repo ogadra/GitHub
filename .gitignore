@@ -1,8 +1,11 @@
 .direnv/
+tmp/
 repositories/*/secrets.json
 
 # Terraform
 .terraform/
+.terraform.lock.hcl
+repositories/*/.terraform.lock.hcl
 *.tfstate
 *.tfstate.backup
 *.tfplan

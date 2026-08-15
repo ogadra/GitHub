@@ -10,11 +10,18 @@ pre-commit:
     # 設定ファイルの構文・整合性を検証
     02_terraform_validate:
       glob: "*.tf"
-      run: terraform validate
+      run: |
+        git diff --cached --name-only -- '*.tf' \
+          | awk -F/ '$1 == "repositories" && $2 != "" { print $1 "/" $2 }' \
+          | sort -u \
+          | while read -r repository; do
+              terraform -chdir="$repository" init -backend=false -upgrade
+              terraform -chdir="$repository" validate
+            done
     # tflint による静的解析
     03_tflint:
       glob: "*.tf"
-      run: tflint --minimum-failure-severity=notice
+      run: tflint --recursive --minimum-failure-severity=notice
     # セキュリティスキャン
     04_checkov:
       run: checkov -d . --external-checks-dir ./custom_policies --quiet --compact
@@ -26,9 +33,15 @@ pre-push:
   parallel: true
   commands:
     terraform-validate:
-      run: terraform validate
+      run: |
+        find repositories -mindepth 1 -maxdepth 1 -type d -not -name .terraform \
+          | sort \
+          | while read -r repository; do
+              terraform -chdir="$repository" init -backend=false -upgrade
+              terraform -chdir="$repository" validate
+            done
     tflint:
-      run: tflint --minimum-failure-severity=notice
+      run: tflint --recursive --minimum-failure-severity=notice
     gitleaks:
       run: gitleaks detect --verbose
     checkov:
