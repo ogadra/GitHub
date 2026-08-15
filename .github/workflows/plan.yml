@@ -21,16 +21,22 @@ jobs:
       - id: repositories
         run: |
           repositories=$(
-            find repositories -mindepth 1 -maxdepth 1 -type d -not -name .terraform \
-              | sed 's#^repositories/##' \
-              | sort \
+            gh pr diff "${{ github.event.pull_request.number }}" --name-only \
+              | awk -F/ '$1 == "repositories" && $2 != "" { print $2 }' \
+              | sort -u \
+              | while read -r repository; do
+                  [ -d "repositories/${repository}" ] && echo "${repository}"
+                done \
               | jq -R -s -c 'split("\n")[:-1]'
           )
 
           echo "repositories=${repositories}" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ secrets.PAT }}
 
   plan:
     needs: list-repositories
+    if: needs.list-repositories.outputs.repositories != '[]'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
