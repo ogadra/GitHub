@@ -8,7 +8,7 @@ allowed-tools: Bash(git switch:*), Bash(git add:*), Bash(git status:*), Bash(git
 
 このリポジトリ（`integrations/github` provider で GitHub リポジトリ群を Terraform 管理）に、新しいリポジトリを作成する root module を追加し、PR を作成する。
 
-`repositories/<module_name>/` がそれぞれ独立した Terraform root であり、state も repository ごとに分かれている（S3 backend の key は `repositories/<module_name>/terraform.tfstate`）。集約用の root module は存在しないため、ディレクトリを追加するだけで CI の plan 対象になる。
+`repositories/<module_name>/` がそれぞれ独立した Terraform root であり、state も repository ごとに分かれている（S3 backend の key は `providers.tf` の backend ブロックに書く）。集約用の root module は存在しないため、ディレクトリを追加するだけで CI の plan 対象になる。
 
 `<module_name>` はリポジトリ名を snake_case にしたもの（`cf-infra` → `cf_infra`、`ebi0510ConferenceApp` → `ebi0510_conference_app`）。
 
@@ -92,7 +92,9 @@ resource "github_branch_protection" "<module_name>" {
 terraform {
   required_version = ">= 1.14"
 
-  backend "s3" {}
+  backend "s3" {
+    key = "repositories/<module_name>/terraform.tfstate"
+  }
 
   required_providers {
     github = {
@@ -117,13 +119,11 @@ Actions secret を管理する場合のみ、`secrets.tf` と `secrets.json.exam
 
 ```bash
 terraform fmt -recursive
-TF_CLI_ARGS_init= terraform -chdir=repositories/<module_name> init -backend=false -upgrade
+terraform -chdir=repositories/<module_name> init -backend=false -upgrade
 terraform -chdir=repositories/<module_name> validate
 tflint --recursive --minimum-failure-severity=notice
 checkov -d . --external-checks-dir ./custom_policies --quiet --compact
 ```
-
-`TF_CLI_ARGS_init=` を前置しているのは、環境に残った `TF_CLI_ARGS_init` が `-backend=false` と競合しないようにするため。
 
 `git add` の前に `git status` / `git diff` で差分を確認し、その後:
 
@@ -151,7 +151,7 @@ fork の場合のコミットメッセージは `feat: add fork of <owner>/<repo
 apply する GitHub Actions のワークフローは無いため、マージ後に手元で apply する。
 
 ```bash
-make init   # backend 未初期化の場合のみ
+terraform -chdir=repositories/<module_name> init
 terraform -chdir=repositories/<module_name> apply
 ```
 
