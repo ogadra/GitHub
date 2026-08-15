@@ -8,20 +8,22 @@ allowed-tools: Bash(git switch:*), Bash(git add:*), Bash(git status:*), Bash(git
 
 このリポジトリ（`integrations/github` provider で GitHub リポジトリ群を Terraform 管理）に、新しいリポジトリを作成する root module を追加し、PR を作成する。
 
-`repositories/<module_name>/` がそれぞれ独立した Terraform root であり、state も repository ごとに分かれている（S3 backend の key は `providers.tf` の backend ブロックに書く）。集約用の root module は存在しないため、ディレクトリを追加するだけで CI の plan 対象になる。
+`repositories/<module_name>/` がそれぞれ独立した Terraform root であり、state も repository ごとに分かれている。
 
-`<module_name>` はリポジトリ名を snake_case にしたもの（`cf-infra` → `cf_infra`、`ebi0510ConferenceApp` → `ebi0510_conference_app`）。
+`<module_name>` はリポジトリ名を snake_case にしたもの。
 
 ## 入力の確認
 
 ユーザーから以下を確認する（不明なものはデフォルト/空で進めてよい）。
 
-- **リポジトリ名**（必須, 例: `cf-infra`）
-- 説明 `description`（任意, 空文字可）
-- ホームページ `homepage_url`（任意）
-- トピック `topics`（任意, 例: `["terraform", "cloudflare"]`）
-- fork かどうか（fork の場合は `source_owner` / `source_repo` が必要）
-- 可視性 `visibility`（`public` 固定。private リポジトリはここでは管理しない）
+- **リポジトリ名**
+- 説明 `description`
+- ホームページ `homepage_url`
+- トピック `topics`
+- fork かどうか
+  - `source_owner`
+  - `source_repo`
+- 可視性 `visibility`
 
 fork の場合は `gh repo view <owner>/<repo> --json description,homepageUrl,defaultBranchRef,visibility,repositoryTopics` で fork 元のメタデータを確認し、`description` と branch protection の `pattern`（default branch 名）を揃える。
 
@@ -86,11 +88,14 @@ resource "github_branch_protection" "<module_name>" {
 }
 ```
 
-`repositories/<module_name>/providers.tf`（既存 repository と同じ内容にする。version は他のディレクトリからコピーして揃える）:
+`repositories/<module_name>/providers.tf`
+既存repositoryと同じ内容にする。
+versionは最新のものを都度検索し、それを用いる。
+
 
 ```hcl
 terraform {
-  required_version = ">= 1.14"
+  required_version = ">= x.x.x"
 
   backend "s3" {
     key = "repositories/<module_name>/terraform.tfstate"
@@ -99,11 +104,11 @@ terraform {
   required_providers {
     github = {
       source  = "integrations/github"
-      version = "= 6.11.1"
+      version = "= x.x.x"
     }
     external = {
       source  = "hashicorp/external"
-      version = "= 2.3.5"
+      version = "= x.x.x"
     }
   }
 }
@@ -112,8 +117,6 @@ provider "github" {
   owner = "ogadra"
 }
 ```
-
-Actions secret を管理する場合のみ、`secrets.tf` と `secrets.json.example` を既存 repository（`repositories/github/` など）から複製する。
 
 ### 3. 検証（プロジェクトの lefthook / CI と同条件）
 
@@ -132,8 +135,8 @@ git add repositories/<module_name>
 gitleaks protect --staged --verbose
 ```
 
-すべて pass することを確認する。fmt は差分を出さない状態に、checkov は `Failed checks: 0` を確認する。
-`custom_policies/CKV_GIT_LABEL_1.py` によりラベルの色は小文字のみ許可されるため、`github_issue_labels` を書く場合は色を小文字にする。
+すべて pass することを確認する。
+fmt は差分を出さない状態に、checkov は `Failed checks: 0` を確認する。
 
 ### 4. コミットと PR
 
@@ -145,18 +148,3 @@ gh pr create --title "feat: create <repo-name> repository" --body "<概要>"
 
 fork の場合のコミットメッセージは `feat: add fork of <owner>/<repo>`。
 コミットメッセージは conventional commits（英語）。
-
-### 5. マージ後の apply
-
-apply する GitHub Actions のワークフローは無いため、マージ後に手元で apply する。
-
-```bash
-terraform -chdir=repositories/<module_name> init
-terraform -chdir=repositories/<module_name> apply
-```
-
-## CI の挙動
-
-PR の plan は変更された `repositories/<module_name>/` だけを matrix で回す。
-`repositories/` 配下以外（`tools/`、ワークフロー、README など）を変更した場合は全 repository が対象になる。
-差分が無い repository には tfcmt がコメントしない。
