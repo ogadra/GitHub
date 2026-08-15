@@ -1,7 +1,9 @@
 terraform {
   required_version = ">= 1.14"
 
-  backend "s3" {}
+  backend "s3" {
+    key = "repositories/hono_and_remix_on_vite_at_workers/terraform.tfstate"
+  }
 
   required_providers {
     github = {
