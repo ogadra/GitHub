@@ -26,8 +26,6 @@ terraform plan
 terraform apply
 ```
 
-S3 backend の key は `repositories/<repository>/terraform.tfstate` です。
-
 ## ラベル管理
 
 ラベルは `github_issue_labels` リソース（authoritative）で管理します。

@@ -1,13 +1,13 @@
+# key は repository ごとに providers.tf の backend ブロックで指定するため、ここには書かない
+
 # --- AWS S3 ---
 bucket       = ""
-key          = "terraform.tfstate"
 region       = ""
 encrypt      = true
 use_lockfile = true
 
 # --- Cloudflare R2 ---
 # bucket                      = ""
-# key                         = "terraform.tfstate"
 # region                      = "auto"
 # access_key                  = ""
 # secret_key                  = ""

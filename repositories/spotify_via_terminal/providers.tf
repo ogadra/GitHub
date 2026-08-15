@@ -1,7 +1,9 @@
 terraform {
   required_version = ">= 1.14"
 
-  backend "s3" {}
+  backend "s3" {
+    key = "repositories/spotify_via_terminal/terraform.tfstate"
+  }
 
   required_providers {
     github = {
