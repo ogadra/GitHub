@@ -70,7 +70,9 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
 
-      - run: tfcmt plan --patch -- terraform -chdir="repositories/${{ matrix.repository }}" plan -no-color
+      - run: |
+          tfcmt --var "target:${{ matrix.repository }}" plan --patch --skip-no-changes --disable-label \
+            -- terraform -chdir="repositories/${{ matrix.repository }}" plan -no-color
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
