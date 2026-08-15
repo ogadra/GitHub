@@ -1,7 +1,9 @@
 terraform {
   required_version = ">= 1.14"
 
-  backend "s3" {}
+  backend "s3" {
+    key = "repositories/ebi0510_conference_app/terraform.tfstate"
+  }
 
   required_providers {
     github = {
