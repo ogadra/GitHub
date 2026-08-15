@@ -20,12 +20,20 @@ jobs:
 
       - id: repositories
         run: |
+          changed=$(gh pr diff "${{ github.event.pull_request.number }}" --name-only)
+
+          # repositories 配下以外の変更は全 repository の plan に影響する
+          if echo "${changed}" | grep -qv '^repositories/'; then
+            targets=$(find repositories -mindepth 1 -maxdepth 1 -type d -not -name .terraform | sed 's#^repositories/##')
+          else
+            targets=$(echo "${changed}" | awk -F/ '{ print $2 }')
+          fi
+
           repositories=$(
-            gh pr diff "${{ github.event.pull_request.number }}" --name-only \
-              | awk -F/ '$1 == "repositories" && $2 != "" { print $2 }' \
+            echo "${targets}" \
               | sort -u \
               | while read -r repository; do
-                  [ -d "repositories/${repository}" ] && echo "${repository}"
+                  [ -n "${repository}" ] && [ -d "repositories/${repository}" ] && echo "${repository}"
                 done \
               | jq -R -s -c 'split("\n")[:-1]'
           )
