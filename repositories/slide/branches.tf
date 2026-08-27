@@ -12,6 +12,7 @@ resource "github_branch_protection" "slide" {
       "check",
       "test",
       "build",
+      "e2e",
     ]
   }
 
