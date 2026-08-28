@@ -15,8 +15,4 @@ resource "github_branch_protection" "slide" {
       "e2e",
     ]
   }
-
-  required_pull_request_reviews {
-    required_approving_review_count = 0
-  }
 }
