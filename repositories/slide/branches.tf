@@ -12,10 +12,7 @@ resource "github_branch_protection" "slide" {
       "check",
       "test",
       "build",
+      "e2e",
     ]
-  }
-
-  required_pull_request_reviews {
-    required_approving_review_count = 0
   }
 }
