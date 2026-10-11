@@ -6,6 +6,15 @@ resource "github_branch_protection" "dotfiles" {
   allows_deletions       = false
   require_signed_commits = true
 
+  required_status_checks {
+    strict = false
+    contexts = [
+      "merge-freeze",
+      "python",
+      "nix",
+    ]
+  }
+
   required_pull_request_reviews {
     required_approving_review_count = 0
   }
