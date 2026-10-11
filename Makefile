@@ -1,4 +1,4 @@
-.PHONY: init auth
+.PHONY: init auth plan apply
 
 BACKEND_CONFIG ?= $(abspath config.s3.tfbackend)
 
@@ -13,6 +13,14 @@ init:
 	done
 	git config --local core.hooksPath .git/hooks
 	lefthook install --force
+
+# Show diffs of all repository Terraform roots in parallel
+plan:
+	tools/tf-all.sh plan
+
+# Apply all repository Terraform roots in parallel after a single approval
+apply:
+	tools/tf-all.sh apply
 
 # Authenticate with GitHub CLI with required scopes for Terraform
 auth:
