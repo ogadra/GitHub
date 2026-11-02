@@ -36,7 +36,9 @@ apply_all() {
 }
 
 show_diffs() {
-	grep -l "^Plan:" "$LOG_DIR"/*.log 2>/dev/null | xargs -r cat || true
+	# The "Plan:" line starts with an ANSI bold code, so "^Plan:" never
+	# matches. Not using -no-color, to keep the diffs colored.
+	grep -l "Plan:" "$LOG_DIR"/*.log 2>/dev/null | xargs -r cat || true
 }
 
 case "${1:-}" in
