@@ -18,5 +18,5 @@ resource "github_repository" "siro53_com" {
   allow_auto_merge       = false
   delete_branch_on_merge = true
 
-  vulnerability_alerts = true
+  vulnerability_alerts = false
 }
