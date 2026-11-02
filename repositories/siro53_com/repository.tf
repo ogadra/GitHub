@@ -1,12 +1,11 @@
 resource "github_repository" "siro53_com" {
+  # checkov:skip=CKV2_GIT_1: archived repository, branch protection not applicable
   name        = "siro53.com"
   description = "ホームページ"
   visibility  = "public"
   topics      = []
 
-  fork         = true
-  source_owner = "siro53"
-  source_repo  = "siro53.com"
+  archived = true
 
   has_issues      = false
   has_discussions = false
