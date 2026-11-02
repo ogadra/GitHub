@@ -4,10 +4,6 @@ resource "github_repository" "siro53_com" {
   visibility  = "public"
   topics      = []
 
-  fork         = true
-  source_owner = "siro53"
-  source_repo  = "siro53.com"
-
   has_issues      = false
   has_discussions = false
   has_projects    = false
